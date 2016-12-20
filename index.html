@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!--Import Google Icon Font-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"/>
+
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+
+
+</head>
+<body>
+
+<!--<div id="firebaseui-auth-container"></div>-->
+<form id="book_inputs" method="post" target="" class="col s12">
+<!--<div id="sign-in-status"></div>
+<div id="sign-in">-->
+
+<div class="container">
+
+<div id="user-signed-in" class="row">
+  <div id="user-info">
+    <div class="clearfix"></div>
+    <div class="input-field col s12" id="name"></div>
+    <div class="clearfix"></div>
+  </div>
+  <p>
+    <input class="btn waves-effect waves-light"  type="button" id="sign-out"value="Sign Out"/>
+    <input class="btn waves-effect waves-light" type="button" id="delete-account" value="Delete Account"/>
+  </p>
+</div>
+<div id="user-signed-out" class="row">
+  <div class="input-field col s12">
+    <input class="btn waves-effect waves-light" type="button" id="sign-in-with-popup" value="Sign In"/>
+  </div>
+</div>
+
+  <!--<a type="button" onclick="signOut();">Sign Out</a>-->
+    <!--<input class="btn waves-effect waves-light"  type="button" onclick="signOut();" value="Sign Out">
+</div>
+<div id="account-details" hidden></div>-->
+
+  <div class="row" id="bookFormRow">
+
+    <div class="divider"></div>
+    <h5>Main Character</h5>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="MCFirstName" type="text" class="validate" value="Tess" required>
+        <label for="MCFirstName" data-error="Please enter a first name">First Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="MCSurname" type="text" class="validate" required>
+        <label for="MCSurname" data-error="Please enter a surname">Surname</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <select id="MCAge"  class="validate" required>
+          <option value="" disabled selected>Choose age</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+        </select>
+        <label for="MCAge" data-error="Please select the age">Age</label>
+      </div>
+      <div class="input-field col s6">
+        <input class="with-gap" name="MCGender" type="radio" id="MCGirl" value="Female" required/>
+        <label for="MCGirl">Girl</label>
+        <input class="with-gap" name="MCGender" type="radio" id="MCBoy" value="Male" required/>
+        <label for="MCBoy">Boy</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="MCAddress" type="text" class="validate" required>
+        <label for="MCAddress" data-error="Please enter the street or road name">Street or road name</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="MCParents" type="text" class="validate" required>
+        <label for="MCParents" data-error="Please enter the parent names">Parents/Guardians child lives with (e.g. Mummy and Daddy)</label>
+      </div>
+      <div class="input-field col s6">
+        <input class="with-gap" name="MCParentNumber" type="radio" id="MCOneMum" value="singleMum" required/>
+        <label for="MCOneMum">Single female</label>
+        <input class="with-gap" name="MCParentNumber" type="radio" id="MCOneDad" value="singleDad" required/>
+        <label for="MCOneDad">Single male</label>
+        <input class="with-gap" name="MCParentNumber" type="radio" id="MCMultipleParents" value="multiple" required/>
+        <label for="MCMultipleParents">More than one</label>
+      </div>
+    </div>
+
+    <h5>School</h5>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="SchoolName" type="text" class="validate" required>
+        <label for="SchoolName" data-error="Please provide the name of the school">Name of child's school (e.g. Dalmain Primary School)</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="SchoolHeadName" type="text" class="validate" required>
+        <label for="SchoolHeadName" data-error="Please provide the name of the head teacher">Name of child's head teacher (e.g. Mrs Booth)</label>
+      </div>
+      <div class="input-field col s6">
+        <input class="with-gap" name="SchoolHeadMasterMistress" type="radio" id="Master" value="Headmaster" required/>
+        <label for="Master">Headmaster</label>
+        <input class="with-gap" name="SchoolHeadMasterMistress" type="radio" id="Mistress" value="Headmistress" required/>
+        <label for="Mistress">Headmistress</label>
+      </div>
+    </div>
+    <h5>Local Landmarks</h5>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="LibraryName" type="text" class="validate" required>
+        <label for="LibraryName">Local library (e.g. Forest Hill Library)</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="PlaygroundName" type="text" class="validate" required>
+        <label for="PlaygroundName">Local park or playground (must have swings!)</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="ShopName" type="text" class="validate" required>
+        <label for="ShopName">Local food shop</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="StationName" type="text" class="validate" required>
+        <label for="StationName">Local train or tube station</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="PubName" type="text" class="validate" required>
+        <label for="PubName">Local pub</label>
+      </div>
+    </div>
+    <h5>Friends</h5>
+
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="OC1Name" type="text" class="validate" required>
+        <label for="OC1Name" data-error="Please enter the name of the first friend">Name of first friend</label>
+      </div>
+      <div class="input-field col s6">
+        <input class="with-gap" name="OC1Gender" type="radio" id="OC1Male" value="Male" required/>
+        <label for="OC1Male">Male</label>
+        <input class="with-gap" name="OC1Gender" type="radio" id="OC1Female" value="Female"  required/>
+        <label for="OC1Female">Female</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <select id="OC1Type"  onchange="hideShowTypeSpecificField(this.value, 'OC1');" class="validate" required>
+          <option value="" selected disabled>Choose relationship</option>
+          <option value="Sibling">Sibling</option>
+          <option value="Friend">Friend</option>
+          <option value="Cousin">Cousin</option>
+          <option value="Pet">Pet</option>
+          <option value="Toy">Toy</option>
+        </select>
+        <label for="OC1Type" data-error="Please enter the relationship of the first friend">Relationship</label>
+      </div>
+      <div class="input-field col s6" id="OC1AgeField" hidden>
+        <select id="OC1Age" class="validate">
+          <option value="" disabled selected>Choose age</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+        </select>
+        <label for="OC1Age">Age</label>
+      </div>
+      <div class="input-field col s6" id="OC1AnimalField" hidden>
+        <select id="OC1Animal">
+          <option value="" disabled selected>Choose type of pet</option>
+          <option value="Cat">Cat</option>
+          <option value="Dog">Dog</option>
+        </select>
+        <label for="OC1Animal">Type of pet</label>
+      </div>
+      <div class="input-field col s6" id="OC1ToyField" hidden>
+        <select id="OC1ToyType">
+          <option value="" disabled selected>Choose type of toy</option>
+          <option value="Teddy">Teddy</option>
+          <option value="Rabbit">Rabbit</option>
+          <option value="Elephant">Elephant</option>
+          <option value="Doll">Doll</option>
+          <option value="Blanket">Blanket</option>
+        </select>
+        <label for="OC1ToyType">Type of toy</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="OC2Name" type="text" class="validate" required>
+        <label for="OC2Name">Name of second friend</label>
+      </div>
+      <div class="input-field col s6">
+        <input class="with-gap" name="OC2Gender" type="radio" id="OC2Male" value="Male" required/>
+        <label for="OC2Male">Male</label>
+        <input class="with-gap" name="OC2Gender" type="radio" id="OC2Female" value="Female" required/>
+        <label for="OC2Female">Female</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <select id="OC2Type"  onchange="hideShowTypeSpecificField(this.value, 'OC2');" required>
+          <option value="" selected disabled>Choose relationship</option>
+          <option value="Sibling">Sibling</option>
+          <option value="Friend">Friend</option>
+          <option value="Cousin">Cousin</option>
+          <option value="Pet">Pet</option>
+          <option value="Toy">Toy</option>
+        </select>
+        <label for="OC2Type">Relationship</label>
+      </div>
+      <div class="input-field col s6" id="OC2AgeField" hidden>
+        <select id="OC2Age">
+          <option value="" disabled selected>Choose age</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+        </select>
+        <label for="OC2Age">Age</label>
+      </div>
+      <div class="input-field col s6" id="OC2AnimalField" hidden>
+        <select id="OC2Animal">
+          <option value="" disabled selected>Choose type of pet</option>
+          <option value="Cat">Cat</option>
+          <option value="Dog">Dog</option>
+        </select>
+        <label for="OC2Animal">Type of pet</label>
+      </div>
+      <div class="input-field col s6" id="OC2ToyField" hidden>
+        <select id="OC2ToyType">
+          <option value="" disabled selected>Choose type of toy</option>
+          <option value="Teddy">Teddy</option>
+          <option value="Rabbit">Rabbit</option>
+          <option value="Elephant">Elephant</option>
+          <option value="Doll">Doll</option>
+          <option value="Blanket">Blanket</option>
+        </select>
+        <label for="OC2ToyType">Type of toy</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="OC3Name" type="text" class="validate" required>
+        <label for="OC3Name">Name of third friend</label>
+      </div>
+      <div class="input-field col s6">
+        <input class="with-gap" name="OC3Gender" type="radio" id="OC3Male" value="Male" required/>
+        <label for="OC3Male">Male</label>
+        <input class="with-gap" name="OC3Gender" type="radio" id="OC3Female" value="Female" required/>
+        <label for="OC3Female">Female</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <select id="OC3Type"  onchange="hideShowTypeSpecificField(this.value, 'OC3');" required>
+          <option value="" selected disabled>Choose relationship</option>
+          <option value="Sibling">Sibling</option>
+          <option value="Friend">Friend</option>
+          <option value="Cousin">Cousin</option>
+          <option value="Pet">Pet</option>
+          <option value="Toy">Toy</option>
+        </select>
+        <label for="OC3Type">Relationship</label>
+      </div>
+      <div class="input-field col s6" id="OC3AgeField" hidden>
+        <select id="OC3Age">
+          <option value="" disabled selected>Choose age</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+        </select>
+        <label for="OC3Age">Age</label>
+      </div>
+      <div class="input-field col s6" id="OC3AnimalField" hidden>
+        <select id="OC3Animal">
+          <option value="" disabled selected>Choose type of pet</option>
+          <option value="Cat">Cat</option>
+          <option value="Dog">Dog</option>
+        </select>
+        <label for="OC3Animal">Type of pet</label>
+      </div>
+      <div class="input-field col s6" id="OC3ToyField" hidden>
+        <select id="OC3ToyType">
+          <option value="" disabled selected>Choose type of toy</option>
+          <option value="Teddy">Teddy</option>
+          <option value="Rabbit">Rabbit</option>
+          <option value="Elephant">Elephant</option>
+          <option value="Doll">Doll</option>
+          <option value="Blanket">Blanket</option>
+        </select>
+        <label for="OC3ToyType">Type of toy</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="OC4Name" type="text" class="validate" required>
+        <label for="OC4Name">Name of fourth friend</label>
+      </div>
+      <div class="input-field col s6">
+        <input class="with-gap" name="OC4Gender" type="radio" id="OC4Male" value="Male" required/>
+        <label for="OC4Male">Male</label>
+        <input class="with-gap" name="OC4Gender" type="radio" id="OC4Female" value="Female" required/>
+        <label for="OC4Female">Female</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <select id="OC4Type"  onchange="hideShowTypeSpecificField(this.value, 'OC4');" required>
+          <option value="" selected disabled>Choose relationship</option>
+          <option value="Sibling">Sibling</option>
+          <option value="Friend">Friend</option>
+          <option value="Cousin">Cousin</option>
+          <option value="Pet">Pet</option>
+          <option value="Toy">Toy</option>
+        </select>
+        <label for="OC4Type">Relationship</label>
+      </div>
+      <div class="input-field col s6" id="OC4AgeField" hidden>
+        <select id="OC4Age">
+          <option value="" disabled selected>Choose age</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+        </select>
+        <label for="OC4Age">Age</label>
+      </div>
+      <div class="input-field col s6" id="OC4AnimalField" hidden>
+        <select id="OC4Animal">
+          <option value="" disabled selected>Choose type of pet</option>
+          <option value="Cat">Cat</option>
+          <option value="Dog">Dog</option>
+        </select>
+        <label for="OC4Animal">Type of pet</label>
+      </div>
+      <div class="input-field col s6" id="OC4ToyField" hidden>
+        <select id="OC4ToyType">
+          <option value="" disabled selected>Choose type of toy</option>
+          <option value="Teddy">Teddy</option>
+          <option value="Rabbit">Rabbit</option>
+          <option value="Elephant">Elephant</option>
+          <option value="Doll">Doll</option>
+          <option value="Blanket">Blanket</option>
+        </select>
+        <label for="OC4ToyType">Type of toy</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <!--<button class="btn waves-effect waves-light" onclick="writeMyStory();">Write My Story</button>-->
+        <input class="btn waves-effect waves-light"  type="button" onclick="writeMyStory();" value="Write My Story">
+      </div>
+    </div>
+  </div>
+  <div class="row" id="bookText" hidden>
+    <div class="col s12">
+      <div class="card blue-grey darken-1">
+        <div class="card-action">
+          <a type="button" name="previousButton" onclick="previousPage();" disabled>Previous</a>
+          <a type="button" name="nextButton" onclick="nextPage();">Next</a>
+          <a type="button" onclick="startAgain();">Start Again</a>
+        </div>
+        <div class="card-content white-text" id="bookTextCell">
+        </div>
+        <div class="card-content white-text" id="pageNumberCell">
+        </div>
+    </div>
+  </div>
+  </form>
+</div>
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+
+
+<!--<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase-auth.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase-messaging.js"></script>-->
+
+<!-- Leave out Storage -->
+<!-- <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase-storage.js"></script> -->
+
+<script src="firebaseConfig.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+<script src="firebaseAuth.js"></script>
+
+<script src="origText.js"></script>
+<script src="typeArrays.js"></script>
+<script src="keyValuePairs.js"></script>
+<script>
+//alert($page24);
+function hideShowTypeSpecificField(selectedValue, OCNumber){
+
+  if(selectedValue=="Pet"){
+    document.getElementById(OCNumber+'AnimalField').hidden=false;
+    document.getElementById(OCNumber+'ToyField').hidden=true;
+    document.getElementById(OCNumber+'AgeField').hidden=true;
+  }
+  else if (selectedValue=="Toy") {
+    document.getElementById(OCNumber+'AnimalField').hidden=true;
+    document.getElementById(OCNumber+'ToyField').hidden=false;
+    document.getElementById(OCNumber+'AgeField').hidden=true;
+  }
+  else{
+    document.getElementById(OCNumber+'AnimalField').hidden=true;
+    document.getElementById(OCNumber+'ToyField').hidden=true;
+    document.getElementById(OCNumber+'AgeField').hidden=false;
+  }
+}
+
+function validateForm(){
+  for(i=0; i<document.getElementById('book_inputs').elements.length; i++){
+    if(document.getElementById('book_inputs').elements[i].required){
+      if(document.getElementById('book_inputs').elements[i].value==""){
+        //alert(document.getElementById('book_inputs').elements[i].name);
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+</script>
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+  <script>
+  $(document).ready(function() {
+      $('select').material_select();
+    });
+  </script>
+
+</body>
+</html>
