@@ -24,8 +24,14 @@ var bookInputs = document.forms["book_inputs"];
     //alert(bookInputs[bookInput].id + " = " + bookInputs[bookInput].value);
   }
   alert('users/' + currentUid + '/' + book_id);
-    /*firebase.database().ref('users/' + currentUid + '/' + book_id).set({
-    bookObject;
+  
+  //New (by Sam):
+  firebase.database().ref().child('users/' + currentUid + '/' + book_id).set(bookObject);
+    
+  /*Old:
+  firebase.database().ref('users/' + currentUid + '/' + book_id).set({
+  bookObject;
   });*/
+  
   //alert("Done");
 }
