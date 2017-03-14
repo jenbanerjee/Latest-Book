@@ -7,7 +7,7 @@
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"/>
 
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
 
 
 </head>
@@ -20,16 +20,16 @@
 
 <div class="container">
 
-<div id="user-signed-in" class="row">
-  <div id="user-info">
+<div id="user-signed-in" class="row" style="margin-top:5px">
+  <div id="user-info" class="left">
     <div class="clearfix"></div>
-    <div class="input-field col s12" id="name"></div>
+    <div class="input-field" id="name"></div>
     <div class="clearfix"></div>
   </div>
-  <p>
+  <div class="right">
     <input class="btn waves-effect waves-light"  type="button" id="sign-out"value="Sign Out"/>
     <input class="btn waves-effect waves-light" type="button" id="delete-account" value="Delete Account"/>
-  </p>
+  </div>
 </div>
 <div id="user-signed-out" class="row">
   <div class="input-field col s12">
@@ -48,7 +48,7 @@
     <h5>Main Character</h5>
     <div class="row">
       <div class="input-field col s6">
-        <input id="MCFirstName" type="text" class="validate" value="Tess" required>
+        <input id="MCFirstName" type="text" class="validate" required>
         <label for="MCFirstName" data-error="Please enter a first name">First Name</label>
       </div>
       <div class="input-field col s6">
@@ -58,7 +58,7 @@
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <select id="MCAge"  class="validate" required>
+        <select id="MCAge"   class="validate" required>
           <option value="" disabled selected>Choose age</option>
           <option value="4">4</option>
           <option value="5">5</option>
@@ -153,7 +153,6 @@
       </div>
     </div>
     <h5>Friends</h5>
-
     <div class="row">
       <div class="input-field col s6">
         <input id="OC1Name" type="text" class="validate" required>
@@ -168,7 +167,7 @@
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <select id="OC1Type"  onchange="hideShowTypeSpecificField(this.value, 'OC1');" class="validate" required>
+        <select id="OC1Type"   onchange="hideShowTypeSpecificField(this.value, 'OC1');" class="validate" required>
           <option value="" selected disabled>Choose relationship</option>
           <option value="Sibling">Sibling</option>
           <option value="Friend">Friend</option>
@@ -179,7 +178,7 @@
         <label for="OC1Type" data-error="Please enter the relationship of the first friend">Relationship</label>
       </div>
       <div class="input-field col s6" id="OC1AgeField" hidden>
-        <select id="OC1Age" class="validate">
+        <select id="OC1Age"   class="validate">
           <option value="" disabled selected>Choose age</option>
           <option value="0">0</option>
           <option value="1">1</option>
@@ -197,7 +196,7 @@
         <label for="OC1Age">Age</label>
       </div>
       <div class="input-field col s6" id="OC1AnimalField" hidden>
-        <select id="OC1Animal">
+        <select id="OC1Animal"  >
           <option value="" disabled selected>Choose type of pet</option>
           <option value="Cat">Cat</option>
           <option value="Dog">Dog</option>
@@ -205,7 +204,7 @@
         <label for="OC1Animal">Type of pet</label>
       </div>
       <div class="input-field col s6" id="OC1ToyField" hidden>
-        <select id="OC1ToyType">
+        <select id="OC1ToyType"  >
           <option value="" disabled selected>Choose type of toy</option>
           <option value="Teddy">Teddy</option>
           <option value="Rabbit">Rabbit</option>
@@ -230,7 +229,7 @@
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <select id="OC2Type"  onchange="hideShowTypeSpecificField(this.value, 'OC2');" required>
+        <select id="OC2Type"   onchange="hideShowTypeSpecificField(this.value, 'OC2');" required>
           <option value="" selected disabled>Choose relationship</option>
           <option value="Sibling">Sibling</option>
           <option value="Friend">Friend</option>
@@ -241,7 +240,7 @@
         <label for="OC2Type">Relationship</label>
       </div>
       <div class="input-field col s6" id="OC2AgeField" hidden>
-        <select id="OC2Age">
+        <select id="OC2Age"  >
           <option value="" disabled selected>Choose age</option>
           <option value="0">0</option>
           <option value="1">1</option>
@@ -259,7 +258,7 @@
         <label for="OC2Age">Age</label>
       </div>
       <div class="input-field col s6" id="OC2AnimalField" hidden>
-        <select id="OC2Animal">
+        <select id="OC2Animal"  >
           <option value="" disabled selected>Choose type of pet</option>
           <option value="Cat">Cat</option>
           <option value="Dog">Dog</option>
@@ -267,7 +266,7 @@
         <label for="OC2Animal">Type of pet</label>
       </div>
       <div class="input-field col s6" id="OC2ToyField" hidden>
-        <select id="OC2ToyType">
+        <select id="OC2ToyType"  >
           <option value="" disabled selected>Choose type of toy</option>
           <option value="Teddy">Teddy</option>
           <option value="Rabbit">Rabbit</option>
@@ -292,7 +291,7 @@
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <select id="OC3Type"  onchange="hideShowTypeSpecificField(this.value, 'OC3');" required>
+        <select id="OC3Type"   onchange="hideShowTypeSpecificField(this.value, 'OC3');" required>
           <option value="" selected disabled>Choose relationship</option>
           <option value="Sibling">Sibling</option>
           <option value="Friend">Friend</option>
@@ -303,7 +302,7 @@
         <label for="OC3Type">Relationship</label>
       </div>
       <div class="input-field col s6" id="OC3AgeField" hidden>
-        <select id="OC3Age">
+        <select id="OC3Age"  >
           <option value="" disabled selected>Choose age</option>
           <option value="0">0</option>
           <option value="1">1</option>
@@ -321,7 +320,7 @@
         <label for="OC3Age">Age</label>
       </div>
       <div class="input-field col s6" id="OC3AnimalField" hidden>
-        <select id="OC3Animal">
+        <select id="OC3Animal"  >
           <option value="" disabled selected>Choose type of pet</option>
           <option value="Cat">Cat</option>
           <option value="Dog">Dog</option>
@@ -329,13 +328,13 @@
         <label for="OC3Animal">Type of pet</label>
       </div>
       <div class="input-field col s6" id="OC3ToyField" hidden>
-        <select id="OC3ToyType">
+        <select id="OC3ToyType"  >
           <option value="" disabled selected>Choose type of toy</option>
           <option value="Teddy">Teddy</option>
           <option value="Rabbit">Rabbit</option>
           <option value="Elephant">Elephant</option>
-          <option value="Doll">Doll</option>
           <option value="Blanket">Blanket</option>
+          <option value="Doll">Doll</option>
         </select>
         <label for="OC3ToyType">Type of toy</label>
       </div>
@@ -354,7 +353,7 @@
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <select id="OC4Type"  onchange="hideShowTypeSpecificField(this.value, 'OC4');" required>
+        <select id="OC4Type"   onchange="hideShowTypeSpecificField(this.value, 'OC4');" required>
           <option value="" selected disabled>Choose relationship</option>
           <option value="Sibling">Sibling</option>
           <option value="Friend">Friend</option>
@@ -365,7 +364,7 @@
         <label for="OC4Type">Relationship</label>
       </div>
       <div class="input-field col s6" id="OC4AgeField" hidden>
-        <select id="OC4Age">
+        <select id="OC4Age"  >
           <option value="" disabled selected>Choose age</option>
           <option value="0">0</option>
           <option value="1">1</option>
@@ -383,7 +382,7 @@
         <label for="OC4Age">Age</label>
       </div>
       <div class="input-field col s6" id="OC4AnimalField" hidden>
-        <select id="OC4Animal">
+        <select id="OC4Animal"  >
           <option value="" disabled selected>Choose type of pet</option>
           <option value="Cat">Cat</option>
           <option value="Dog">Dog</option>
@@ -391,7 +390,7 @@
         <label for="OC4Animal">Type of pet</label>
       </div>
       <div class="input-field col s6" id="OC4ToyField" hidden>
-        <select id="OC4ToyType">
+        <select id="OC4ToyType"  >
           <option value="" disabled selected>Choose type of toy</option>
           <option value="Teddy">Teddy</option>
           <option value="Rabbit">Rabbit</option>
@@ -402,11 +401,16 @@
         <label for="OC4ToyType">Type of toy</label>
       </div>
     </div>
+    <div class="divider"></div>
     <div class="row">
-      <div class="input-field col s12">
+      <div class="input-field row">
         <!--<button class="btn waves-effect waves-light" onclick="writeMyStory();">Write My Story</button>-->
-        <input class="btn waves-effect waves-light"  type="button" onclick="writeMyStory();" value="Write My Story">
-        <input class="btn waves-effect waves-light"  type="button" onclick="saveMyStory('1');" value="Save My Story">
+        <a class="btn waves-effect waves-light left" onclick="writeMyStory();">Write My Story</a>
+        <div class="right">
+          <a id="saveBtn" class="waves-effect waves-light btn" onclick="ModalOpen(this.id)">Save My Story</a>
+          <a id="loadBtn" class="waves-effect waves-light btn" onclick="ModalOpen(this.id)">Load My Story</a>
+        </div>
+        <!--<input class="btn waves-effect waves-light"  type="button" onclick="loadMyStory();" value="Load My Story">-->
       </div>
     </div>
   </div>
@@ -427,8 +431,46 @@
   </form>
 </div>
 
+<!-- Save Modal Structure -->
+<div id="modal_save" class="modal">
+  <div class="modal-content">
+    <h4>Save Story</h4>
+    <p style="margin-bottom:20px;">To save your book, please enter a uique name for your book below and hit <em>Save My Story</em>.</p>
+    <div class="input-field col s6">
+      <input id="BookTitle" type="text" class="validate" required>
+      <label for="BookTitle" data-error="Please enter a valid name for your book:">Book Title</label>
+    </div>
+  </div>
+  <div class="modal-content save-error" style="display: none;">
+    <h4>Save Story</h4>
+    <p>This name is already taken! Are you sure you would like to overwrite this story?</p>
+  </div>
+  <div class="modal-footer">
+    <a class="btn waves-effect waves-green" onclick="saveButton();">Save My Story</a>
+    <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+  </div>
+  <div class="modal-footer save-error" style="display:none;">
+    <a class="confirm btn waves-effect waves-green">Continue</a>
+    <a class="confirm waves-effect waves-red btn-flat">Cancel</a>
+  </div>
+</div>
 
-
+<!-- Load Modal Structure -->
+<div id="modal_load" class="modal" style="overflow-y:visible !important;">
+  <div class="modal-content">
+    <h4>Load Story</h4>
+    <p>To load your book, please choose the book from the list below and hit <em>Load My Story</em>.</p>
+    <div class="input-field col s3">
+    <select style="margin-top:10px">
+      <option value="" disabled selected>Choose story</option>
+    </select>
+  </div>
+  </div>
+  <div class="modal-footer">
+    <a class="btn waves-effect waves-green" onclick="loadButton();">Load My Story</a>
+    <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+  </div>
+</div>
 
 <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
 
@@ -450,22 +492,25 @@
 <script src="typeArrays.js"></script>
 <script src="keyValuePairs.js"></script>
 <script src="database.js"></script>
+<script src="buttons.js"></script>
 
 <script>
 //alert($page24);
 function hideShowTypeSpecificField(selectedValue, OCNumber){
 
-  if(selectedValue=="Pet"){
+  if(!selectedValue){
+    document.getElementById(OCNumber+'AnimalField').hidden=true;
+    document.getElementById(OCNumber+'ToyField').hidden=true;
+    document.getElementById(OCNumber+'AgeField').hidden=true;
+  }else if (selectedValue=="Pet"){
     document.getElementById(OCNumber+'AnimalField').hidden=false;
     document.getElementById(OCNumber+'ToyField').hidden=true;
     document.getElementById(OCNumber+'AgeField').hidden=true;
-  }
-  else if (selectedValue=="Toy") {
+  } else if (selectedValue=="Toy") {
     document.getElementById(OCNumber+'AnimalField').hidden=true;
     document.getElementById(OCNumber+'ToyField').hidden=false;
     document.getElementById(OCNumber+'AgeField').hidden=true;
-  }
-  else{
+  } else{
     document.getElementById(OCNumber+'AnimalField').hidden=true;
     document.getElementById(OCNumber+'ToyField').hidden=true;
     document.getElementById(OCNumber+'AgeField').hidden=false;
@@ -493,6 +538,11 @@ function validateForm(){
   $(document).ready(function() {
       $('select').material_select();
     });
+
+  $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
   </script>
 
 </body>

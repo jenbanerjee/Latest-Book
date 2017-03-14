@@ -61,6 +61,7 @@ var signInWithPopup = function() {
 var handleSignedInUser = function(user) {
 
   currentUid = user.uid;
+  window.head_ref = firebase.database().ref('users/' + currentUid);
   document.getElementById('user-signed-in').hidden = false;
   document.getElementById('user-signed-out').hidden = true;
   document.getElementById('name').innerHTML = "Hello, "+ user.displayName;
